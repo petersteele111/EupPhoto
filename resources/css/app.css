@@ -2,3 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.cta-button {
+    position: relative;
+    overflow: hidden; /* Ensures the border effect doesn't overflow */
+    border: 3px solid transparent;
+}
+
+.cta-button:hover {
+    animation: rainbow-border 10s infinite;
+}
+
+@keyframes rainbow-border {
+    0% { border-color: red; }
+    15% { border-color: orange; }
+    30% { border-color: yellow; }
+    45% { border-color: green; }
+    60% { border-color: blue; }
+    75% { border-color: indigo; }
+    90% { border-color: violet; }
+    100% { border-color: red; }
+}
