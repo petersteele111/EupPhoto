@@ -50,6 +50,19 @@
                 </div>
             </div>
 
+                <!-- Login and Register Links -->
+                @if (Route::has('login'))
+                    <div class="hidden lg:flex lg:items-center lg:justify-end p-6">
+                        @guest
+                            <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                            @endif
+                        @endguest
+                    </div>
+                @endif
+
             <!-- Settings Dropdown -->
             @auth
                 <div class="hidden lg:flex sm:items-center sm:ms-6">
@@ -101,12 +114,13 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden">
         @auth
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-    @endauth
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+            </div>
+        @endauth
+
     <div class="pt-2 pb-3 space-y-1">
         <x-responsive-nav-link :href="route('Home')" :active="request()->routeIs('Home')">
             {{ __('Home') }}
@@ -136,6 +150,17 @@
         <x-responsive-nav-link :href="route('Contact')" :active="request()->routeIs('Contact')">
             {{ __('Contact') }}
         </x-responsive-nav-link>
+    </div>
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 w-[95%] mx-auto">
+    <div class="pt-2 pb-3 space-y-1">
+        <x-responsive-nav-link :href="route('login')">
+            {{ __('Log in') }}
+        </x-responsive-nav-link>
+        @if (Route::has('register'))
+            <x-responsive-nav-link :href="route('register')">
+                {{ __('Register') }}
+            </x-responsive-nav-link>
+        @endif
     </div>
 
         <!-- Responsive Settings Options -->
