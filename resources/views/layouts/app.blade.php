@@ -12,7 +12,10 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -26,6 +29,13 @@
                     </div>
                 </header>
             @endif
+
+            <div id="spinner">
+                <div class="loader">
+                    <img src="{{ asset('img/logo_200x134_min.png') }}" alt="Loading...">
+                    <p>Loading...</p>
+                </div>
+            </div>
 
             <!-- Page Content -->
             <main>
