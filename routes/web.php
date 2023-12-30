@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PhotoController; // Import the PhotosController class
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::post('/photos', [PhotoController::class, 'store'])->name('photos.store');
+Route::get('/upload', [PhotoController::class, 'create'])->name('photos.create');
 
 Route::get('/home', function () {
     return view('index');

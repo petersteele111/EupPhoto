@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Photo;
 
 class PhotoController extends Controller
 {
@@ -19,7 +20,7 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        //
+        return view('uploadPhotos');
     }
 
     /**
@@ -27,7 +28,32 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'photos' => 'required',
+        ]);
+    
+        if($request->hasfile('photos'))
+        {
+            foreach($request->file('photos') as $file)
+            {
+                $name = $file->getClientOriginalName();
+                $photo = new Photo();
+                $photo->fileName = $name;
+                $photo->title = $name;
+                $photo->caption = $name;
+                $photo->description = $name;
+                $photo->mime_type = $file->getClientMimeType();
+                $photo->extension = $file->getClientOriginalExtension();
+                $photo->size = $file->getSize();
+                $file->move(public_path().'/images/', $name);  // Move the file to the 'images' directory in the public folder
+                list($width, $height) = getimagesize(public_path().'/images/'.$name);
+                $photo->width = $width;
+                $photo->height = $height;
+                $request->user()->photos()->save($photo);
+            }
+        }
+    
+        return back()->with('success', 'Photos uploaded successfully');
     }
 
     /**
