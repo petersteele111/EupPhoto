@@ -38,7 +38,7 @@
                 @endforeach --}}
                 <div class="grid-item relative">
                     <a href="{{ asset('img/Abram Falls_small.jpg') }}" data-lightbox="main-gallery" data-title="Abram Falls - Cades Cove, Tennessee">
-                        <img src="{{ asset('img/Abram Falls_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/Abram Falls_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/delilah_small.jpg') }}" data-lightbox="main-gallery" data-title="My Cat Delilah">
-                        <img src="{{ asset('img/delilah_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/delilah_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/kids-christmas_small.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/kids-christmas_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/kids-christmas_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/pj-santa_small.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/pj-santa_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/pj-santa_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/reccenter_small.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/reccenter_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/reccenter_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/Tahquamenon Falls FALL_small.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/Tahquamenon Falls FALL_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/Tahquamenon Falls FALL_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/Northern Lgihts 3_small.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/Northern Lgihts 3_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/Northern Lgihts 3_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/Northern Lights 2_small.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/Northern Lights 2_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/Northern Lights 2_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/Sophie_small.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/Sophie_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/Sophie_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/Smoky Mountains_small.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/Smoky Mountains_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/Smoky Mountains_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -118,7 +118,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/pj-wall_small.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/pj-wall_small.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/pj-wall_small.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="grid-item relative">
                     <a href="{{ asset('img/home_1920_min.jpg') }}" data-lightbox="main-gallery" data-title="My caption">
-                        <img src="{{ asset('img/home_1920_min.webp') }}" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('img/home_1920_min.jpg') }}" class="hover:opacity-75 transition ease-in-out duration-150">
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
                             <i class="fas fa-plus text-white text-4xl"></i>
                         </div>
