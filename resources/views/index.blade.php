@@ -1,24 +1,22 @@
 <x-app-layout>
-    <div class="relative bg-cover bg-center text-white" style="background-image: url({{ asset('img/home_1920_min.jpg') }}); height: 100vh;">
+    <div class="relative bg-cover bg-center text-white flex flex-col justify-between items-center" style="background-image: url({{ asset('img/home_1920_min.jpg') }}); height: calc(100vh - 80px);">
         <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div class="relative w-full flex flex-col h-screen items-center justify-center">
-            <div class="mt-4 content-center">
-                <p class=" text-5xl sm:text-7xl xl:text-9xl text-center">Landscape & Portrait </br> Photography</p>
-            </div>
-            <div class="mt-48 text-2xl xl:text-4xl">
-                <a href="{{ route('Contact')}}" class="bg-red-600 hover:bg-red-800 text-white font-bold py-4 px-8 rounded-full">
-                    Work With Me
-                </a>
-            </div>
-                   
-            {{-- Down arrow indicating more content below --}}
-            <div class="flex justify-center mt-96">
-                <a href="#next-section" class="scroll-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 animate-bounce text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                    </svg>
-                </a>
-            </div>
+        <div class="mt-4 content-center text-center">
+            <p class="text-5xl sm:text-7xl xl:text-9xl">Landscape & Portrait </br> Photography</p>
+        </div>
+        <div class="text-2xl xl:text-4xl">
+            <a href="{{ route('Contact')}}" class="bg-red-600 hover:bg-red-800 text-white font-bold py-4 px-8 rounded-full">
+                Work With Me
+            </a>
+        </div>
+        
+        {{-- Down arrow indicating more content below --}}
+        <div class="pb-4">
+            <a href="#next-section" class="scroll-link">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 animate-bounce text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
         </div>
     </div>
 
