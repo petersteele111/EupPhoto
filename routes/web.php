@@ -20,12 +20,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::post('/albums', [AlbumController::class, 'store']);
-Route::get('/albums/create', [AlbumController::class, 'create']);
+Route::post('/albums', [AlbumController::class, 'store'])->middleware('admin');
+Route::get('/albums/create', [AlbumController::class, 'create'])->middleware('admin');
 
-Route::get('/albums/{id}/photos', [PhotoController::class, 'showAlbumPhotos'])->name('albums.photos');
-Route::post('/photos', [PhotoController::class, 'store'])->name('photos.store');
-Route::get('/upload', [PhotoController::class, 'create'])->name('photos.create');
+Route::get('/albums/{id}/photos', [PhotoController::class, 'showAlbumPhotos'])->name('albums.photos')->middleware('admin');
+Route::post('/photos', [PhotoController::class, 'store'])->name('photos.store')->middleware('admin');
+Route::get('/upload', [PhotoController::class, 'create'])->name('photos.create')->middleware('admin');
 
 Route::get('/home', function () {
     return view('index');
