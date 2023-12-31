@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Album; // Import the Album class
 use App\Models\User; // Import the User class
 use Illuminate\Support\Facades\Log; // Import the Log class
+use Illuminate\Support\Facades\DB; // Import the DB class
 
 class AlbumController extends Controller
 {
+
+    public function index()
+    {
+        $albums = Album::all();
+        return view('albums.index', compact('albums'));
+    }
 
     public function create()
     {
@@ -40,5 +47,52 @@ class AlbumController extends Controller
         $user->albums()->attach($album->id);
 
         return redirect('/albums/create');
+    }
+
+    public function edit($id)
+    {
+        $album = Album::find($id);
+        $users = User::all();
+        return view('albums.edit', ['album' => $album, 'users' => $users]);
+    }
+
+    public function update(Request $request, Album $album)
+    {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'cover_image' => 'image',
+            'owner_id' => 'required|exists:users,id',
+        ]);
+
+        // Get the old owner's id before updating the album
+        $oldOwnerId = $album->owner_id;
+
+        if ($request->hasFile('cover_image')) {
+            $filename = $request->cover_image->getClientOriginalName();
+            $path = $request->cover_image->storeAs('cover_images', $filename, 'public');
+            $validated['cover_image'] = $path;
+        }
+
+        $album->update($validated);
+
+        // Update the owner_id in the pivot table
+        DB::table('album_user') // replace with your pivot table name
+            ->where('album_id', $album->id)
+            ->where('user_id', $oldOwnerId)
+            ->update(['user_id' => $request->owner_id, 'updated_at' => now()]);
+
+        return redirect()->route('albums.index');
+    }
+
+    public function destroy(Album $album)
+    {
+        // Remove the album from the pivot table
+        $album->users()->detach();
+
+        // Delete the album
+        $album->delete();
+
+        return redirect()->route('albums.index');
     }
 }

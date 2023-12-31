@@ -13,9 +13,9 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        $photos = Photo::all();
+        return view('photos.index', compact('photos'));
     }
-
     /**
      * Show the form for creating a new resource.
      */

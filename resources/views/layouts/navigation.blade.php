@@ -84,6 +84,15 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
+                            @if (auth()->user() && auth()->user()->email == 'petersteele111@gmail.com')
+                            <x-dropdown-link :href="route('albums.index')">
+                                {{ __('Manage Albums') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('photos.index')">
+                                {{ __('Manage Photos') }}
+                            </x-dropdown-link>
+                            @endif
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
