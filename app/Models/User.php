@@ -43,7 +43,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function photos() {
-        return $this->hasMany(Photo::class);
+    public function albums() {
+        return $this->belongsToMany(Album::class)->withTimestamps();
     }
 }

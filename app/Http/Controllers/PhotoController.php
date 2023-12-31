@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Photo;
+use App\Models\Album; // Import the Album model class
 
 class PhotoController extends Controller
 {
@@ -20,7 +21,9 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        return view('uploadPhotos');
+        $albums = Album::all();
+        // dd($albums);  // Dump the albums and stop the script
+        return view('uploadPhotos', ['albums' => $albums]);
     }
 
     /**
@@ -30,10 +33,13 @@ class PhotoController extends Controller
     {
         $request->validate([
             'photos' => 'required',
+            'album_id' => 'required|exists:albums,id',  // Validate that an album ID is provided and it exists in the albums table
         ]);
-    
+
         if($request->hasfile('photos'))
         {
+            $album = Album::find($request->album_id);
+
             foreach($request->file('photos') as $file)
             {
                 $name = $file->getClientOriginalName();
@@ -45,14 +51,14 @@ class PhotoController extends Controller
                 $photo->mime_type = $file->getClientMimeType();
                 $photo->extension = $file->getClientOriginalExtension();
                 $photo->size = $file->getSize();
-                $file->move(public_path().'/images/', $name);  // Move the file to the 'images' directory in the public folder
-                list($width, $height) = getimagesize(public_path().'/images/'.$name);
+                $path = $file->storeAs('photos', $name, 'public');  // Store the file in the 'photos' directory in the storage folder
+                list($width, $height) = getimagesize(storage_path('app/public/'.$path));
                 $photo->width = $width;
                 $photo->height = $height;
-                $request->user()->photos()->save($photo);
+                $album->photos()->save($photo);
             }
         }
-    
+
         return back()->with('success', 'Photos uploaded successfully');
     }
 
@@ -86,5 +92,11 @@ class PhotoController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function showAlbumPhotos($id)
+    {
+        $album = Album::with('photos')->find($id);  // Fetch the album and its photos
+        return view('albumPhotos', ['album' => $album]);  // Return the 'albumPhotos' view with the album
     }
 }

@@ -10,8 +10,19 @@
                 </div>
                 <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="album" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                            Album
+                        </label>
+                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                            <select id="album" name="album_id" class="form-control">
+                                @foreach ($albums as $album)
+                                    <option value="{{ $album->id }}">{{ $album->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                         <label for="photos" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                            Photos
+                            Upload Photos
                         </label>
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
                             <div class="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
