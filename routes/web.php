@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PhotoController; // Import the PhotosController class
+use App\Http\Controllers\AlbumController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::post('/albums', [AlbumController::class, 'store']);
+Route::get('/albums/create', [AlbumController::class, 'create']);
+
+Route::get('/albums/{id}/photos', [PhotoController::class, 'showAlbumPhotos'])->name('albums.photos');
 Route::post('/photos', [PhotoController::class, 'store'])->name('photos.store');
 Route::get('/upload', [PhotoController::class, 'create'])->name('photos.create');
 
