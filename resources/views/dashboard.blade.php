@@ -12,7 +12,7 @@
                     <p>Your Albums</p>
                 </div>
                 <div class="flex flex-wrap">
-                    @foreach(Auth::user()->albums as $album)
+                    @foreach(Auth::user()->albums()->get() as $album)
                         <div class="w-1/2 md:w-1/3 lg:w-1/4 p-2">
                             <a href="{{ route('albums.photos', $album->id) }}">
                                 <img src="{{ asset('storage/' . $album->cover_image) }}" alt="Album Cover Image">
