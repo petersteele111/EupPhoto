@@ -1,10 +1,11 @@
 <x-app-layout>
     <div class="relative bg-cover bg-center text-white flex flex-col justify-between items-center" style="background-image: url({{ asset('img/home_1920_min.jpg') }}); height: calc(100vh - 80px);">
         <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div class="mt-4 content-center text-center">
+        <div class="mt-4 content-center text-center relative">
             <p class="text-5xl sm:text-7xl xl:text-9xl">Landscape & Portrait </br> Photography</p>
         </div>
-        <div class="text-2xl xl:text-4xl">
+
+        <div class="text-2xl xl:text-4xl relative">
             <a href="{{ route('Contact')}}" class="bg-red-600 hover:bg-red-800 text-white font-bold py-4 px-8 rounded-full">
                 Work With Me
             </a>
