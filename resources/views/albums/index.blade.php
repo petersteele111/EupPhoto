@@ -1,8 +1,8 @@
 <x-app-layout>
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="flex flex-wrap -mx-4">
             @foreach ($albums as $album)
-                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8">
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8 mt-8">
                     <div class="bg-white shadow rounded-lg overflow-hidden">
                         <img src="{{ asset('storage/' . $album->cover_image) }}" alt="{{ $album->title }}" class="w-full h-64 object-cover">
                         <div class="p-6">

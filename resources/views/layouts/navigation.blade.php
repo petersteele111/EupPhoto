@@ -14,7 +14,7 @@
                 @auth
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-lg"> <!-- Increased font-size with text-lg -->
-                            {{ __('Dashboard') }}
+                            {{ __('Client Home') }}
                         </x-nav-link>
                     </div>
                 @endauth
@@ -125,7 +125,7 @@
         @auth
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                    {{ __('Client Home') }}
                 </x-responsive-nav-link>
             </div>
         @endauth
@@ -184,6 +184,15 @@
                     <x-responsive-nav-link :href="route('profile.edit')">
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
+
+                    @if (auth()->user() && auth()->user()->email == 'petersteele111@gmail.com')
+                    <x-responsive-nav-link :href="route('albums.index')">
+                        {{ __('Manage Albums') }}
+                    </x-dropdown-link>
+                    <x-responsive-nav-link :href="route('photos.index')">
+                        {{ __('Manage Photos') }}
+                    </x-dropdown-link>
+                    @endif
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
