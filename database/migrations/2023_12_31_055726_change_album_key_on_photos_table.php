@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // I need to change the user_id to be album_id as a foreign key instead
         Schema::table('photos', function (Blueprint $table) {
-            $table->dropForeign('images_user_id_foreign');
-            $table->dropColumn('user_id');
-    
+            // Check if the foreign key exists before trying to drop it
+            if (Schema::hasColumn('photos', 'user_id')) {
+                $table->dropForeign('photos_user_id_foreign'); // Update the foreign key name
+                $table->dropColumn('user_id');
+            }
+
             if (!Schema::hasColumn('photos', 'album_id')) {
                 $table->foreignId('album_id')->constrained()->onDelete('cascade');
             }
