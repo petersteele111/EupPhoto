@@ -9,13 +9,13 @@
             @csrf
             <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                 <div>
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">
-                        Upload Photos
+                    <h3 class="text-4xl pt-4 leading-6 font-medium text-white text-center">
+                        Upload Photos to Album
                     </h3>
                 </div>
                 <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="album" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2 mt-2">
+                        <label for="album" class="block text-xl font-medium text-gray-700 sm:mt-px sm:pt-2 mt-2 text-white">
                             Album
                         </label>
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -28,29 +28,27 @@
                             </select>
                         </div>
                     </div>
-                        <label for="photos" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                        <label for="photos" class="block text-xl font-medium text-white sm:mt-px sm:pt-2">
                             Upload Photos
                         </label>
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
-                            <div class="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                            <div class="max-w-lg flex flex-col justify-center items-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                 <div class="space-y-1 text-center">
-                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                        <path d="M28.59 18.59L34.17 12H4a2 2 0 00-2 2v20a2 2 0 002 2h44a2 2 0 002-2V24l-7.59-7.59a1.996 1.996 0 00-2.828 0l-2.828 2.828-2.828-2.83z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                    <div class="flex text-sm text-gray-600">
-                                        <label for="photos" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                    <div class="flex justify-center items-center">
+                                        <i class="fa fa-image text-7xl text-white"></i>
+                                    </div>
+                                    <div class="flex justify-center items-center text-sm text-gray-600 pt-6">
+                                        <label for="photos" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 p-2 text-center">
                                             <span>Upload a file</span>
                                             <input id="photos" name="photos[]" type="file" class="sr-only" multiple>
                                         </label>
-                                        <p class="pl-1">or drag and drop</p>
                                     </div>
-                                    <p class="text-xs text-gray-500">
+                                    <p class="text-xs text-gray-500 text-center pt-5">
                                         PNG, JPG, GIF up to 10MB
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
                 <div class="pt-5">
                     <div class="flex justify-end">

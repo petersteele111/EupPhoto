@@ -19,11 +19,10 @@ class PhotoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($albumId)
     {
         $albums = Album::all();
-        // dd($albums);  // Dump the albums and stop the script
-        return view('uploadPhotos', ['albums' => $albums]);
+        return view('photos.create', ['albums' => $albums, 'selectedAlbumId' => $albumId]);
     }
 
     /**

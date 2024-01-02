@@ -1,5 +1,8 @@
 <x-app-layout>
     <div class="container mx-auto px-4">
+        <div class="my-8">
+            <a href="{{ route('photos.create', $album->id) }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Upload <i class="fa fa-upload"></i></a>
+        </div>
         <div class="flex flex-wrap -mx-4">
             @foreach ($album->photos as $photo)
                 <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8">
