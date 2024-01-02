@@ -27,6 +27,7 @@ Route::delete('/albums/{album}', [AlbumController::class, 'destroy'])->middlewar
 Route::post('/albums', [AlbumController::class, 'store'])->middleware('admin');
 Route::get('/albums/create', [AlbumController::class, 'create'])->middleware('admin')->name('albums.create');
 Route::put('/albums/{album}', [AlbumController::class, 'update'])->middleware('admin')->name('albums.update');
+Route::get('/albums/{id}/edit-photos', [AlbumController::class, 'editPhotos'])->name('albums.editPhotos');
 
 // Photos
 Route::get('/photos', [PhotoController::class, 'index'])->middleware('admin')->name('photos.index');

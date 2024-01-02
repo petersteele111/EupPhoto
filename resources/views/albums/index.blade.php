@@ -4,7 +4,7 @@
             @foreach ($albums as $album)
                 <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8 mt-8">
                     <div class="bg-white shadow rounded-lg overflow-hidden">
-                        <a href="{{ route('albums.photos', $album->id) }}">
+                        <a href="{{ route('albums.editPhotos', $album->id) }}">
                             <img src="{{ asset('storage/' . $album->cover_image) }}" alt="{{ $album->title }}" class="w-full h-64 object-cover">
                         </a>
                         <div class="p-6 text-center">

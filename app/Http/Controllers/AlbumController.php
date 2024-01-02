@@ -95,4 +95,10 @@ class AlbumController extends Controller
 
         return redirect()->route('albums.index');
     }
+
+    public function editPhotos($id)
+    {
+        $album = Album::with('photos')->find($id);
+        return view('albums.editPhotos', ['album' => $album]);
+    }
 }

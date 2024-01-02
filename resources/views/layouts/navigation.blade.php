@@ -88,9 +88,6 @@
                             <x-dropdown-link :href="route('albums.index')">
                                 {{ __('Manage Albums') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('photos.index')">
-                                {{ __('Manage Photos') }}
-                            </x-dropdown-link>
                             @endif
 
                             <!-- Authentication -->
@@ -188,9 +185,6 @@
                     @if (auth()->user() && auth()->user()->email == 'petersteele111@gmail.com')
                     <x-responsive-nav-link :href="route('albums.index')">
                         {{ __('Manage Albums') }}
-                    </x-dropdown-link>
-                    <x-responsive-nav-link :href="route('photos.index')">
-                        {{ __('Manage Photos') }}
                     </x-dropdown-link>
                     @endif
 
