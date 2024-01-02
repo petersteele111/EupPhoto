@@ -9,7 +9,7 @@
                     <div class="bg-white shadow rounded-lg overflow-hidden">
                         <img src="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover">
                         <div class="p-6">
-                            <h2 class="text-2xl font-bold">{{ $photo->title }}</h2>
+                            <h2 class="text-xl font-bold">{{ $photo->title }}</h2>
                             <div class="mt-4">
                                 <a href="{{ route('photos.edit', $photo->id) }}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Edit</a>
                                 <form method="POST" action="{{ route('photos.destroy', $photo->id) }}" class="inline-block">
