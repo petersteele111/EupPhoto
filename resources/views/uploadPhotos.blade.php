@@ -1,6 +1,11 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-        <form action="{{ route('photos.store') }}" method="post" enctype="multipart/form-data" class="space-y-8 divide-y divide-gray-200">
+        @if (session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        @endif
+        <form action="{{ route('photos.store') }}" method="post" enctype="multipart/form-data" class="space-y-8 divide-y divide-gray-200 px-6">
             @csrf
             <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                 <div>
@@ -10,7 +15,7 @@
                 </div>
                 <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="album" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                        <label for="album" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2 mt-2">
                             Album
                         </label>
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -45,15 +50,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="pt-5">
-                <div class="flex justify-end">
-                    <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Upload
-                    </button>
+                <div class="pt-5">
+                    <div class="flex justify-end">
+                        <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Upload
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
+        <div id="progress" class="hidden h-2 bg-indigo-200 rounded">
+            <div id="progress-bar" class="h-full bg-indigo-600 rounded"></div>
+        </div>
     </div>
 
 </x-app-layout>

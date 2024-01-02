@@ -39,19 +39,21 @@ class PhotoController extends Controller
         if($request->hasfile('photos'))
         {
             $album = Album::find($request->album_id);
+            $directory = 'photos/' . $album->id;
 
             foreach($request->file('photos') as $file)
             {
                 $name = $file->getClientOriginalName();
                 $photo = new Photo();
                 $photo->fileName = $name;
+                $photo->directory = $directory;
                 $photo->title = $name;
                 $photo->caption = $name;
                 $photo->description = $name;
                 $photo->mime_type = $file->getClientMimeType();
                 $photo->extension = $file->getClientOriginalExtension();
                 $photo->size = $file->getSize();
-                $path = $file->storeAs('photos', $name, 'public');  // Store the file in the 'photos' directory in the storage folder
+                $path = $file->storeAs($directory, $name, 'public');  // Store the file in the 'photos' directory in the storage folder
                 list($width, $height) = getimagesize(storage_path('app/public/'.$path));
                 $photo->width = $width;
                 $photo->height = $height;

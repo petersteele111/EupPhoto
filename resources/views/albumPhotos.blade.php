@@ -1,19 +1,3 @@
-{{-- <x-app-layout>
-    <div class="text-center p-4">
-        <h1 class="text-4xl font-bold text-white">Album -{{ $album->title }}</h1>
-        <img class="w-full h-64 object-cover mt-4" src="{{ asset('storage/' . $album->cover_image) }}" alt="Album Cover Image">
-    </div>
-    <div class="flex flex-wrap justify-around p-4">
-        @foreach ($album->photos as $photo)
-            <div class="m-2 bg-white overflow-hidden shadow-lg rounded-lg max-w-xs flex-shrink-0">
-                <a href="#">
-                    <img alt="Photo" class="object-cover w-full h-64" src="{{ asset('storage/photos/' . $photo->fileName) }}">
-                </a>
-            </div>
-        @endforeach
-    </div>
-</x-app-layout> --}}
-
 <x-app-layout>
     <div class="relative text-center">
         <img class="w-full h-64 object-cover mt-4 p-4" src="{{ asset('storage/' . $album->cover_image) }}" alt="Album Cover Image">
@@ -24,8 +8,8 @@
     <div class="flex flex-wrap justify-around p-4">
         @forelse ($album->photos as $photo)
             <div class="m-2 bg-white overflow-hidden shadow-lg rounded-lg max-w-xs flex-shrink-0">
-                <a href="{{ asset('storage/photos/' . $photo->fileName) }}" data-lightbox="{{ $album->title }}" data-title="{{ $photo->title }}">
-                    <img alt="Photo" class="object-cover w-full h-64" src="{{ asset('storage/photos/' . $photo->fileName) }}">
+                <a href="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" data-lightbox="{{ $album->title }}" data-title="{{ $photo->title }}">
+                    <img alt="Photo" class="object-cover w-full h-64" src="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}">
                 </a>
             </div>
         @empty

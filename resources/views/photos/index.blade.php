@@ -4,7 +4,7 @@
             @foreach ($photos as $photo)
                 <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8">
                     <div class="bg-white shadow rounded-lg overflow-hidden">
-                        <img src="{{ asset('images/' . $photo->fileName) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover">
+                        <img src="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover">
                         <div class="p-6">
                             <h2 class="text-2xl font-bold">{{ $photo->title }}</h2>
                             <div class="mt-4">
