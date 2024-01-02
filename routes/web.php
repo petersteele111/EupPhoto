@@ -33,7 +33,7 @@ Route::get('/albums/{id}/edit-photos', [AlbumController::class, 'editPhotos'])->
 Route::get('/photos', [PhotoController::class, 'index'])->middleware('admin')->name('photos.index');
 Route::get('/photos/{photo}/edit', [PhotoController::class, 'edit'])->middleware('admin')->name('photos.edit');
 Route::delete('/photos/{photo}', [PhotoController::class, 'destroy'])->middleware('admin')->name('photos.destroy');
-Route::get('/albums/{album}/photos', [PhotoController::class, 'showAlbumPhotos'])->name('albums.photos')->middleware('admin');
+Route::get('/albums/{album}/photos', [PhotoController::class, 'showAlbumPhotos'])->name('albums.photos');
 Route::post('/photos', [PhotoController::class, 'store'])->name('photos.store')->middleware('admin');
 Route::get('/photos/create/{albumId}', [PhotoController::class, 'create'])->name('photos.create')->middleware('admin');
 
