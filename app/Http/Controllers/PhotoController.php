@@ -87,7 +87,7 @@ class PhotoController extends Controller
             }
         }
 
-        return back()->with('success', 'Photos uploaded successfully');
+        return redirect()->route('albums.editPhotos', ['id' => $photo->album_id])->with('success', 'Photos uploaded successfully!');
     }
 
 
@@ -102,9 +102,10 @@ class PhotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Photo $photo)
     {
-        //
+        $albums = Album::all();
+        return view('photos.edit', compact('photo', 'albums'));
     }
 
     /**
@@ -113,7 +114,21 @@ class PhotoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'album_id' => 'required|exists:albums,id',
+            'title' => 'required|max:255',
+            'caption' => 'required|max:255',
+            'description' => 'required',
+        ]);
+
+        $photo = Photo::find($id);
+        $photo->album_id = $validatedData['album_id'];
+        $photo->title = $validatedData['title'];
+        $photo->caption = $validatedData['caption'];
+        $photo->description = $validatedData['description'];
+        $photo->save();
+
+        return redirect()->route('albums.editPhotos', ['id' => $photo->album_id]);
     }
 
     /**
@@ -121,12 +136,23 @@ class PhotoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $photo = Photo::find($id);
+        $photo->delete();
+
+        return redirect()->route('albums.editPhotos', ['id' => $photo->album_id])->with('success', 'Photo deleted successfully!');
     }
 
     public function showAlbumPhotos($id)
     {
         $album = Album::with('photos')->find($id);  // Fetch the album and its photos
         return view('albumPhotos', ['album' => $album]);  // Return the 'albumPhotos' view with the album
+    }
+
+    public function massDestroy(Request $request)
+    {
+        $photoIds = $request->input('photos');
+        Photo::whereIn('id', $photoIds)->delete();
+
+        return redirect()->back()->with('success', 'Photos deleted successfully!');
     }
 }

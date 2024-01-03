@@ -12,6 +12,13 @@ window.onload = function() {
     initializeMasonry();
     hideSpinner();
     initializeSmoothScroll();
+
+    setTimeout(function() {
+        const elements = document.querySelectorAll('.status-message');
+        elements.forEach(function(element) {
+            element.style.display = 'none';
+        });
+    }, 5000);
 };
 
 function initializeMasonry() {
@@ -32,7 +39,7 @@ function initializeSmoothScroll() {
     
     $(document).ready(function(){
         $('.scroll-link').on('click', function(event){
-            event.preventDefault();
+            // event.preventDefault();
     
             $('html, body').animate({
                 scrollTop: $($.attr(this, 'href')).offset().top
