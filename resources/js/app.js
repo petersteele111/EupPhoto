@@ -1,9 +1,10 @@
 import './bootstrap';
+import jQuery from 'jquery';
 import Alpine from 'alpinejs';
 import 'lightbox2';
 import Masonry from 'masonry-layout';
-import $ from 'jquery';
 
+window.$ = jQuery;
 window.Alpine = Alpine;
 Alpine.start();
 
@@ -28,11 +29,15 @@ function hideSpinner() {
 }
 
 function initializeSmoothScroll() {
+    
     $(document).ready(function(){
         $('.scroll-link').on('click', function(event){
+            event.preventDefault();
+    
             $('html, body').animate({
                 scrollTop: $($.attr(this, 'href')).offset().top
             }, 500);
         });
     });
+    
 }
