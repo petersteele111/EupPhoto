@@ -76,7 +76,7 @@ class PhotoController extends Controller
 
                     // Save the thumbnail to a temporary path
                     $tempPath = tempnam(sys_get_temp_dir(), 'thumbnail');
-                    $image->save($tempPath);
+                    $image->save($tempPath, 60);
 
                     // Use Laravel's Storage facade to store the thumbnail image
                     Storage::disk('public')->put($thumbnailPath, file_get_contents($tempPath));
