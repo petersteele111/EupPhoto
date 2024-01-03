@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-16">
         <div class="my-8">
             <a href="{{ route('photos.create', $album->id) }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Upload <i class="fa fa-upload"></i></a>
         </div>
