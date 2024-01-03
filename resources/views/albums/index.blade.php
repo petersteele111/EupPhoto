@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="container mx-auto px-4 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-16">
+        <x-breadcrumb />
         <div class="flex flex-wrap -mx-4">
             @foreach ($albums as $album)
                 <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8 mt-8">

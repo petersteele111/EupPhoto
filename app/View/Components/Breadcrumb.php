@@ -15,21 +15,31 @@ class Breadcrumb extends Component
 
     public function createSegments()
     {
-        $segments = collect(request()->segments());
+        $originalSegments = collect(request()->segments());
 
-        $segments = $segments->prepend('home');
-
-        // Filter out numeric segments
-        $segments = $segments->filter(function ($segment) {
+        // Filter out numeric segments for display, but keep them for URL generation
+        $displaySegments = $originalSegments->filter(function ($segment) {
             return !is_numeric($segment);
         });
 
-        return $segments->values()->map(function ($segment, $index) use ($segments) {
+        $breadcrumbs = $displaySegments->map(function ($segment) use ($originalSegments) {
+            // Find the index of the current segment in the original segments
+            $index = $originalSegments->search($segment);
+
+            // Include all original segments in the URL, not just the display segments
             return [
                 'name' => ucfirst($segment),
-                'url' => url($segments->slice(0, $index + 1)->implode('/'))
+                'url' => url($originalSegments->slice(0, $index + 1)->implode('/'))
             ];
         });
+
+        // Prepend the "Home" breadcrumb
+        $breadcrumbs->prepend([
+            'name' => 'Home',
+            'url' => url('/')
+        ]);
+
+        return $breadcrumbs->values();
     }
 
     public function render()
