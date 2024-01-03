@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Photo;
 use App\Models\Album; // Import the Album model class
+use Intervention\Image\ImageManager; // Import the Image class
+use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Support\Facades\Storage; // Import the Storage class
+
 
 class PhotoController extends Controller
 {
@@ -61,6 +65,23 @@ class PhotoController extends Controller
                     list($width, $height) = getimagesize(storage_path('app/public/'.$path));
                     $photo->width = $width;
                     $photo->height = $height;
+
+                    // Generate a thumbnail
+                    $imageManager = new ImageManager(new Driver());
+                    $image = $imageManager->read(storage_path('app/public/' . $path));
+                    $thumbnailDirectory = $directory . '/thumbnails';
+                    $thumbnailPath = $thumbnailDirectory . '/' . $name;
+
+                    $image->scaleDown(200);
+
+                    // Save the thumbnail to a temporary path
+                    $tempPath = tempnam(sys_get_temp_dir(), 'thumbnail');
+                    $image->save($tempPath);
+
+                    // Use Laravel's Storage facade to store the thumbnail image
+                    Storage::disk('public')->put($thumbnailPath, file_get_contents($tempPath));
+
+                    $photo->thumbnail = $thumbnailPath;
                     $album->photos()->save($photo);
                 }
             }
@@ -68,6 +89,7 @@ class PhotoController extends Controller
 
         return back()->with('success', 'Photos uploaded successfully');
     }
+
 
     /**
      * Display the specified resource.
@@ -87,6 +109,7 @@ class PhotoController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
      */
     public function update(Request $request, string $id)
     {

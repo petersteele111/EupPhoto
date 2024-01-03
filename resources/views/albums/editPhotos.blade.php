@@ -7,7 +7,9 @@
             @foreach ($album->photos as $photo)
                 <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8">
                     <div class="bg-white shadow rounded-lg overflow-hidden">
-                        <img src="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover">
+                        <a href="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" data-lightbox="album-{{ $album->id }}">
+                            <img src="{{ asset('storage/' . $photo->thumbnail) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover">
+                        </a>
                         <div class="p-6">
                             <h2 class="text-xl font-bold">{{ $photo->title }}</h2>
                             <div class="mt-4">
