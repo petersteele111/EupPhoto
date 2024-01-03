@@ -27,14 +27,17 @@ Route::delete('/albums/{album}', [AlbumController::class, 'destroy'])->middlewar
 Route::post('/albums', [AlbumController::class, 'store'])->middleware('admin');
 Route::get('/albums/create', [AlbumController::class, 'create'])->middleware('admin')->name('albums.create');
 Route::put('/albums/{album}', [AlbumController::class, 'update'])->middleware('admin')->name('albums.update');
+Route::get('/albums/{id}/edit-photos', [AlbumController::class, 'editPhotos'])->name('albums.editPhotos');
 
 // Photos
 Route::get('/photos', [PhotoController::class, 'index'])->middleware('admin')->name('photos.index');
 Route::get('/photos/{photo}/edit', [PhotoController::class, 'edit'])->middleware('admin')->name('photos.edit');
+Route::put('/photos/{photo}', [PhotoController::class, 'update'])->middleware('admin')->name('photos.update');
 Route::delete('/photos/{photo}', [PhotoController::class, 'destroy'])->middleware('admin')->name('photos.destroy');
-Route::get('/albums/{album}/photos', [PhotoController::class, 'showAlbumPhotos'])->name('albums.photos')->middleware('admin');
+Route::get('/albums/{album}/photos', [PhotoController::class, 'showAlbumPhotos'])->middleware(['auth', 'verified'])->name('albums.photos');
 Route::post('/photos', [PhotoController::class, 'store'])->name('photos.store')->middleware('admin');
-Route::get('/upload', [PhotoController::class, 'create'])->name('photos.create')->middleware('admin');
+Route::get('/photos/create/{albumId}', [PhotoController::class, 'create'])->name('photos.create')->middleware('admin');
+Route::post('/photos/massDestroy', [PhotoController::class, 'massDestroy'])->name('photos.massDestroy')->middleware('admin');
 
 Route::get('/home', function () {
     return view('index');

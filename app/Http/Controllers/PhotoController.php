@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Photo;
 use App\Models\Album; // Import the Album model class
+use Intervention\Image\ImageManager; // Import the Image class
+use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Support\Facades\Storage; // Import the Storage class
+
 
 class PhotoController extends Controller
 {
@@ -19,11 +23,10 @@ class PhotoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($albumId)
     {
         $albums = Album::all();
-        // dd($albums);  // Dump the albums and stop the script
-        return view('uploadPhotos', ['albums' => $albums]);
+        return view('photos.create', ['albums' => $albums, 'selectedAlbumId' => $albumId]);
     }
 
     /**
@@ -44,25 +47,49 @@ class PhotoController extends Controller
             foreach($request->file('photos') as $file)
             {
                 $name = $file->getClientOriginalName();
-                $photo = new Photo();
-                $photo->fileName = $name;
-                $photo->directory = $directory;
-                $photo->title = $name;
-                $photo->caption = $name;
-                $photo->description = $name;
-                $photo->mime_type = $file->getClientMimeType();
-                $photo->extension = $file->getClientOriginalExtension();
-                $photo->size = $file->getSize();
                 $path = $file->storeAs($directory, $name, 'public');  // Store the file in the 'photos' directory in the storage folder
-                list($width, $height) = getimagesize(storage_path('app/public/'.$path));
-                $photo->width = $width;
-                $photo->height = $height;
-                $album->photos()->save($photo);
+
+                // Check if a record for this file already exists in the same directory
+                $existingPhoto = Photo::where('fileName', $name)->where('directory', $directory)->first();
+                if (!$existingPhoto) {
+                    // If not, create a new record
+                    $photo = new Photo();
+                    $photo->fileName = $name;
+                    $photo->directory = $directory;
+                    $photo->title = $name;
+                    $photo->caption = $name;
+                    $photo->description = $name;
+                    $photo->mime_type = $file->getClientMimeType();
+                    $photo->extension = $file->getClientOriginalExtension();
+                    $photo->size = $file->getSize();
+                    list($width, $height) = getimagesize(storage_path('app/public/'.$path));
+                    $photo->width = $width;
+                    $photo->height = $height;
+
+                    // Generate a thumbnail
+                    $imageManager = new ImageManager(new Driver());
+                    $image = $imageManager->read(storage_path('app/public/' . $path));
+                    $thumbnailDirectory = $directory . '/thumbnails';
+                    $thumbnailPath = $thumbnailDirectory . '/' . $name;
+
+                    $image->scaleDown(200);
+
+                    // Save the thumbnail to a temporary path
+                    $tempPath = tempnam(sys_get_temp_dir(), 'thumbnail');
+                    $image->save($tempPath, 60);
+
+                    // Use Laravel's Storage facade to store the thumbnail image
+                    Storage::disk('public')->put($thumbnailPath, file_get_contents($tempPath));
+
+                    $photo->thumbnail = $thumbnailPath;
+                    $album->photos()->save($photo);
+                }
             }
         }
 
-        return back()->with('success', 'Photos uploaded successfully');
+        return redirect()->route('albums.editPhotos', ['id' => $photo->album_id])->with('success', 'Photos uploaded successfully!');
     }
+
 
     /**
      * Display the specified resource.
@@ -75,17 +102,33 @@ class PhotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Photo $photo)
     {
-        //
+        $albums = Album::all();
+        return view('photos.edit', compact('photo', 'albums'));
     }
 
     /**
      * Update the specified resource in storage.
+     *
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'album_id' => 'required|exists:albums,id',
+            'title' => 'required|max:255',
+            'caption' => 'required|max:255',
+            'description' => 'required',
+        ]);
+
+        $photo = Photo::find($id);
+        $photo->album_id = $validatedData['album_id'];
+        $photo->title = $validatedData['title'];
+        $photo->caption = $validatedData['caption'];
+        $photo->description = $validatedData['description'];
+        $photo->save();
+
+        return redirect()->route('albums.editPhotos', ['id' => $photo->album_id]);
     }
 
     /**
@@ -93,12 +136,23 @@ class PhotoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $photo = Photo::find($id);
+        $photo->delete();
+
+        return redirect()->route('albums.editPhotos', ['id' => $photo->album_id])->with('success', 'Photo deleted successfully!');
     }
 
     public function showAlbumPhotos($id)
     {
         $album = Album::with('photos')->find($id);  // Fetch the album and its photos
         return view('albumPhotos', ['album' => $album]);  // Return the 'albumPhotos' view with the album
+    }
+
+    public function massDestroy(Request $request)
+    {
+        $photoIds = $request->input('photos');
+        Photo::whereIn('id', $photoIds)->delete();
+
+        return redirect()->back()->with('success', 'Photos deleted successfully!');
     }
 }

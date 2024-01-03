@@ -16,7 +16,7 @@
                         <div class="w-1/2 md:w-1/3 lg:w-1/4 p-2">
                             <a href="{{ route('albums.photos', $album->id) }}">
                                 <img src="{{ asset('storage/' . $album->cover_image) }}" alt="Album Cover Image">
-                                <p class="text-white">{{$album->title}}</p>
+                                <p class="text-white text-2xl text-center">{{$album->title}}</p>
                             </a>
                         </div>
                     @endforeach

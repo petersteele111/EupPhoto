@@ -7,6 +7,8 @@ use App\Models\Album; // Import the Album class
 use App\Models\User; // Import the User class
 use Illuminate\Support\Facades\Log; // Import the Log class
 use Illuminate\Support\Facades\DB; // Import the DB class
+use Intervention\Image\ImageManager; // Import the Image class
+use Intervention\Image\Drivers\Gd\Driver;
 
 class AlbumController extends Controller
 {
@@ -37,6 +39,11 @@ class AlbumController extends Controller
             $filename = $request->cover_image->getClientOriginalName();
             $path = $request->cover_image->storeAs('cover_images', $filename, 'public');
             $validated['cover_image'] = $path;
+
+            // Compress the cover image
+            $imageManager = new ImageManager(new Driver());
+            $image = $imageManager->read(storage_path('app/public/' . $path));
+            $image->save(storage_path('app/public/' . $path), 60);
         }
 
         $album = new Album($validated);
@@ -72,6 +79,11 @@ class AlbumController extends Controller
             $filename = $request->cover_image->getClientOriginalName();
             $path = $request->cover_image->storeAs('cover_images', $filename, 'public');
             $validated['cover_image'] = $path;
+
+            // Compress the cover image
+            $imageManager = new ImageManager(new Driver());
+            $image = $imageManager->read(storage_path('app/public/' . $path));
+            $image->save(storage_path('app/public/' . $path), 10);
         }
 
         $album->update($validated);
@@ -94,5 +106,11 @@ class AlbumController extends Controller
         $album->delete();
 
         return redirect()->route('albums.index');
+    }
+
+    public function editPhotos($id)
+    {
+        $album = Album::with('photos')->find($id);
+        return view('albums.editPhotos', ['album' => $album]);
     }
 }
