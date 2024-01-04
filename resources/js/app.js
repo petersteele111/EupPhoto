@@ -1,10 +1,9 @@
+import { attachLightbox } from './lightbox.js';
+
 import './bootstrap';
-import jQuery from 'jquery';
 import Alpine from 'alpinejs';
-import 'lightbox2';
 import Masonry from 'masonry-layout';
 
-window.$ = jQuery;
 window.Alpine = Alpine;
 Alpine.start();
 
@@ -24,10 +23,16 @@ window.onload = function() {
 function initializeMasonry() {
     var elem = document.querySelector('.grid');
     if (elem) {
-        new Masonry(elem, {
+        var msnry = new Masonry(elem, {
             itemSelector: '.grid-item',
             percentPosition: true,
         });
+
+        msnry.on('layoutComplete', function() {
+            attachLightbox(); // Re-attach the lightbox when new images are loaded
+        });
+
+        msnry.layout();
     }
 }
 
@@ -36,15 +41,14 @@ function hideSpinner() {
 }
 
 function initializeSmoothScroll() {
-    
-    $(document).ready(function(){
-        $('.scroll-link').on('click', function(event){
-            // event.preventDefault();
-    
-            $('html, body').animate({
-                scrollTop: $($.attr(this, 'href')).offset().top
-            }, 500);
+    document.querySelectorAll('.scroll-link').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            window.scrollTo({
+                top: target.offsetTop,
+                behavior: 'smooth'
+            });
         });
     });
-    
 }

@@ -19,8 +19,8 @@
                                 <input type="checkbox" name="photos[]" value="{{ $photo->id }}" class="form-checkbox h-5 w-5 photo-checkbox">
                                 <span class="text-gray-900 font-medium">Select</span>
                             </label>
-                            <a href="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" data-lightbox="album-{{ $album->id }}">
-                                <img src="{{ asset('storage/' . $photo->thumbnail) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover">
+                            <a href="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}">
+                                <img src="{{ asset('storage/' . $photo->thumbnail) }}" data-src="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover caesar-lightbox">
                             </a>
                             <div class="p-6">
                                 <h2 class="text-xl font-bold">{{ $photo->title }}</h2>

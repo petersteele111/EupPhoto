@@ -9,8 +9,8 @@
     <div class="flex flex-wrap justify-around p-4">
         @forelse ($album->photos as $photo)
             <div class="m-2 bg-white overflow-hidden shadow-lg rounded-lg max-w-xs flex-shrink-0">
-                <a href="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" data-lightbox="{{ $album->title }}" data-title="{{ $photo->title }}">
-                    <img alt="Photo" class="object-cover w-full h-64" src="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}">
+                <a href="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}">
+                    <img src="{{ asset('storage/' . $photo->thumbnail) }}" data-src="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover caesar-lightbox">
                 </a>
             </div>
         @empty

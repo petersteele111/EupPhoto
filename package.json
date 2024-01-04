@@ -17,8 +17,7 @@
     },
     "dependencies": {
         "imagesloaded": "^5.0.0",
-        "jquery": "^3.7.1",
-        "lightbox2": "^2.11.4",
-        "masonry-layout": "^4.2.2"
+        "masonry-layout": "^4.2.2",
+        "simplelightbox": "^2.14.2"
     }
 }
