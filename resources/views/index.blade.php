@@ -39,10 +39,6 @@
                 <div class="grid-item relative">
                     
                         <img src="{{ asset('img/' . $image) }}" data-src="{{ asset('img/' . $image) }}" class="hover:opacity-75 transition ease-in-out duration-150 caesar-lightbox">
-                        <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-50 opacity-0 hover:opacity-100 transition ease-in-out duration-150">
-                            <i class="fas fa-plus text-white text-4xl"></i>
-                        </div>
-                    
                 </div>
                 @endforeach
             </div>
