@@ -36,10 +36,10 @@
                     </div>
                 @endforeach --}}
                 @foreach(['Abram Falls_small.jpg', 'delilah_small.jpg', 'kids-christmas_small.jpg', 'pj-santa_small.jpg', 'reccenter_small.jpg', 'Tahquamenon Falls FALL_small.jpg', 'Northern Lgihts 3_small.jpg', 'Northern Lights 2_small.jpg', 'Sophie_small.jpg', 'Smoky Mountains_small.jpg', 'pj-wall_small.jpg', 'home_1920_min.jpg'] as $image)
-                <div class="grid-item relative">
-                    
+                    <div class="grid-item relative group">
                         <img src="{{ asset('img/' . $image) }}" data-src="{{ asset('img/' . $image) }}" class="hover:opacity-75 transition ease-in-out duration-150 caesar-lightbox">
-                </div>
+                        <i class="fas fa-search absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl opacity-0 transition duration-500 group-hover:opacity-100 pointer-events-none"></i>
+                    </div>
                 @endforeach
             </div>
         </div>
