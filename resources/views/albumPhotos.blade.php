@@ -8,9 +8,10 @@
     </div>
     <div class="flex flex-wrap justify-around p-4">
         @forelse ($album->photos as $photo)
-            <div class="m-2 bg-white overflow-hidden shadow-lg rounded-lg max-w-xs flex-shrink-0">
-                <a href="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}">
-                    <img src="{{ asset('storage/' . $photo->thumbnail) }}" data-src="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover caesar-lightbox">
+            <div class="m-2 bg-white overflow-hidden shadow-lg rounded-lg max-w-xs flex-shrink-0 transform transition duration-500 hover:scale-105 relative group">
+                <a href="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" class="block relative h-64 overflow-hidden">
+                    <img src="{{ asset('storage/' . $photo->thumbnail) }}" data-src="{{ asset('storage/' . $photo->directory . '/' . $photo->fileName) }}" alt="{{ $photo->title }}" class="w-full h-full object-cover transition duration-500 ease-in-out transform hover:scale-105 caesar-lightbox">
+                    <i class="fas fa-search absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl opacity-0 transition duration-500 group-hover:opacity-100"></i>
                 </a>
             </div>
         @empty
