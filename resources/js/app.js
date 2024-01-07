@@ -3,12 +3,14 @@ import { attachLightbox } from './lightbox.js';
 import './bootstrap';
 import Alpine from 'alpinejs';
 import Masonry from 'masonry-layout';
+import Isotope from 'isotope-layout'; // Import Isotope
 
 window.Alpine = Alpine;
 Alpine.start();
 
 window.onload = function() {
     initializeMasonry();
+    initializeIsotope(); // Initialize Isotope
     hideSpinner();
     initializeSmoothScroll();
 
@@ -33,6 +35,25 @@ function initializeMasonry() {
         });
 
         msnry.layout();
+    }
+}
+
+// Add a new function to initialize Isotope
+function initializeIsotope() {
+    var grid = document.querySelector('.grid');
+    if (grid) {
+        var iso = new Isotope(grid, {
+            itemSelector: '.grid-item',
+            layoutMode: 'masonry'
+        });
+
+        var filters = document.querySelectorAll('[data-filter]');
+        filters.forEach(function(filter) {
+            filter.addEventListener('click', function() {
+                var filterValue = this.getAttribute('data-filter');
+                iso.arrange({ filter: filterValue });
+            });
+        });
     }
 }
 

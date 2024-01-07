@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "imagesloaded": "^5.0.0",
+        "isotope-layout": "^3.0.6",
         "masonry-layout": "^4.2.2",
         "simplelightbox": "^2.14.2"
     }

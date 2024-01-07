@@ -3,6 +3,9 @@
         <div class="popular-photos" id="next-section">
             <h2 class="uppercase tracking-wider text-white text-5xl text-center font-semibold">Portfolio</h2>
             <p class="text-white text-center text-xl my-12">Here are some of my favorite shots, I hope you enjoy!</p>
+            <button class="text-white text-3xl" data-filter="*">Show All |</button>
+            <button class="text-white text-3xl" data-filter=".landscapes"> Landscapes |</button>
+            <button class="text-white text-3xl" data-filter=".portraits"> Portraits</button>
             <div class="grid">
                 @foreach(['Abram Falls_small.jpg', 'delilah_small.jpg', 'kids-christmas_small.jpg', 'pj-santa_small.jpg', 'reccenter_small.jpg', 'Tahquamenon Falls FALL_small.jpg', 'Northern Lgihts 3_small.jpg', 'Northern Lights 2_small.jpg', 'Sophie_small.jpg', 'Smoky Mountains_small.jpg', 'pj-wall_small.jpg', 'home_1920_min.jpg'] as $image)
                     <div class="grid-item relative group">
