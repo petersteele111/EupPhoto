@@ -48,7 +48,7 @@ Route::get('/services', function () {
 })->name('Services');
 
 Route::get('/about', function () {
-    return view('index');
+    return view('about');
 })->name('About');
 
 Route::get('/contact', function () {
