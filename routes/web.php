@@ -40,7 +40,10 @@ Route::post('/photos', [PhotoController::class, 'store'])->name('photos.store')-
 Route::get('/photos/create/{albumId}', [PhotoController::class, 'create'])->name('photos.create')->middleware('admin');
 Route::post('/photos/massDestroy', [PhotoController::class, 'massDestroy'])->name('photos.massDestroy')->middleware('admin');
 
-Route::get('/upload', [PortfolioController::class, 'create'])->name('portfolio.create')->middleware('admin');
+// Portfolio
+Route::get('/portfolio/upload', [PortfolioController::class, 'create'])->name('portfolio.create')->middleware('admin');
+Route::post('/portfolio', [PortfolioController::class, 'store'])->name('portfolio.store')->middleware('admin');
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index')->middleware('admin');
 
 Route::get('/home', function () {
     return view('index');
@@ -57,8 +60,6 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('index');
 })->name('Contact');
-
-Route::get('/portfolio', [PhotoController::class, 'portfolio'])->name('Portfolio');
 
 Route::get('/pricing', function () {
     return view('index');

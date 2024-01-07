@@ -21,6 +21,8 @@ class Photo extends Model
         'size',
         'width',
         'height',
+        'tag',
+        'category',
     ];
 
     public function album() {

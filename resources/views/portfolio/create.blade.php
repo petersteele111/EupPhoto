@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         @if (session('success'))
-        <div class="status-message bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-            <span class="block sm:inline">{{ session('success') }}</span>
-        </div>
-    @endif
-        <form action="{{ route('photos.store') }}" method="post" enctype="multipart/form-data" class="space-y-8 divide-y divide-gray-200 px-6">
+            <div class="status-message bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        @endif
+        <form action="{{ route('portfolio.store') }}" method="post" enctype="multipart/form-data" class="space-y-8 divide-y divide-gray-200 px-6">
             @csrf
             <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                 <div>
@@ -28,7 +28,17 @@
                             Category
                         </label>
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
-                            <input id="category" name="category" type="text" class="form-control">
+                            <select id="category" name="category" class="form-control">
+                                <option value="">None</option>
+                                <option value="landscape">Landscape</option>
+                                <option value="portrait">Portrait</option>
+                                <option value="wildlife">Wildlife</option>
+                                <option value="macro">Macro</option>
+                                <option value="astrophotography">Astrophotography</option>
+                                <option value="architecture">Architecture</option>
+                                <option value="street">Street</option>
+                                <option value="pets">Pets</option>
+                            </select>
                         </div>
                     </div>
                     <label for="photos" class="block text-xl font-medium text-white sm:mt-px sm:pt-2">
