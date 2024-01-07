@@ -56,7 +56,7 @@ Route::get('/contact', function () {
 })->name('Contact');
 
 Route::get('/portfolio', function () {
-    return view('index');
+    return view('portfolio');
 })->name('Portfolio');
 
 Route::get('/pricing', function () {
