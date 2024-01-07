@@ -10,7 +10,7 @@
                 <a href="Contact" class="inline-block mt-8 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-500">Schedule Consultation</a>
             </div>
             <div class="md:w-1/2">
-                <img class="w-full h-full object-cover rounded-lg shadow-md" src="{{ asset('images/20231018_041523.jpg') }}" alt="About me">
+                <img class="w-full h-full object-cover rounded-lg shadow-md filter grayscale" src="{{ asset('img/about 1.jpg') }}" alt="About me">
             </div>
         </div>
     </div>
