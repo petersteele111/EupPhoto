@@ -16,7 +16,8 @@ class PortfolioController extends Controller
     public function index()
     {
         $images = Photo::where('directory', 'portfolio')->get();
-        return view('portfolio.index', ['images' => $images]);
+        $categories = Photo::select('category')->distinct()->get();
+        return view('portfolio.index', ['images' => $images], ['categories' => $categories]);
     }
 
     /**

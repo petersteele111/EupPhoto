@@ -13,7 +13,6 @@ function attachLightbox() {
             imageUrls.push(lightBoxElement.getAttribute(imgUrlAttribute));
         })
     }
-    console.log('Images loaded', imageUrls);
 
     // Attach a single click event listener to the body
     document.body.addEventListener('click', function(e) {

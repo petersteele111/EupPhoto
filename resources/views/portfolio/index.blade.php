@@ -5,14 +5,11 @@
             <p class="text-white text-center text-xl my-12">Here are some of my favorite shots, I hope you enjoy!</p>
             <div class="flex justify-center space-x-4 mb-8">
                 <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter="*">Show All</button>
-                <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter=".landscape">Landscapes</button>
-                <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter=".portrait">Portraits</button>
-                <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter=".wildlife">Wildlife</button>
-                <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter=".macro">Macro</button>
-                <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter=".astrophotography">Astrophotography</button>
-                <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter=".architecture">Architecture</button>
-                <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter=".street">Street</button>
-                <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter=".pets">Pets</button>
+                @foreach($categories as $category)
+    @if(!empty($category->category))
+        <button class="text-white text-3xl bg-gray-800 px-4 py-2 rounded hover:bg-gray-700" data-filter=".{{ $category->category }}">{{ ucfirst($category->category) }}</button>
+    @endif
+@endforeach
             </div>
             <div class="grid">
                 @foreach($images as $image)
