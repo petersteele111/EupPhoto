@@ -88,6 +88,9 @@
                             <x-dropdown-link :href="route('albums.index')">
                                 {{ __('Manage Albums') }}
                             </x-dropdown-link>
+                            <x-dropdown-link :href="route('portfolio.edit')">
+                                {{ __('Manage Portfolio') }}
+                            </x-dropdown-link>
                             @endif
 
                             <!-- Authentication -->
@@ -185,7 +188,10 @@
                     @if (auth()->user() && auth()->user()->email == 'petersteele111@gmail.com')
                     <x-responsive-nav-link :href="route('albums.index')">
                         {{ __('Manage Albums') }}
-                    </x-dropdown-link>
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('portfolio.edit')">
+                        {{ __('Manage POrtfolio') }}
+                    </x-responsive-nav-link>
                     @endif
 
                     <!-- Authentication -->
