@@ -27,14 +27,6 @@
             <h2 class="uppercase tracking-wider text-white text-5xl text-center font-semibold">Recent Work</h2>
             <p class="text-white text-center text-xl my-12">Here are some of my recent shots that I have really enjoyed, I hope you do to!</p>
             <div class="grid">
-                {{-- Future import images to this gallery and make it dynamic! --}}
-                {{-- @foreach ($photos as $photo)
-                    <div class="grid-item">
-                        <a href="{{ route('Photo', $photo->id) }}">
-                            <img src="{{ asset('storage/photos/' . $photo->image) }}" alt="Photo by {{ $photo->user->name }}" class="hover:opacity-75 transition ease-in-out duration-150">
-                        </a>
-                    </div>
-                @endforeach --}}
                 @foreach(['Abram Falls_small.jpg', 'delilah_small.jpg', 'kids-christmas_small.jpg', 'pj-santa_small.jpg', 'reccenter_small.jpg', 'Tahquamenon Falls FALL_small.jpg', 'Northern Lgihts 3_small.jpg', 'Northern Lights 2_small.jpg', 'Sophie_small.jpg', 'Smoky Mountains_small.jpg', 'pj-wall_small.jpg', 'home_1920_min.jpg'] as $image)
                     <div class="grid-item relative group">
                         <img src="{{ asset('img/' . $image) }}" data-src="{{ asset('img/' . $image) }}" class="hover:opacity-75 transition ease-in-out duration-150 caesar-lightbox">
