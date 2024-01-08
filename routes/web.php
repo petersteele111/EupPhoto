@@ -43,7 +43,7 @@ Route::post('/photos/massDestroy', [PhotoController::class, 'massDestroy'])->nam
 // Portfolio
 Route::get('/portfolio/upload', [PortfolioController::class, 'create'])->name('portfolio.create')->middleware('admin');
 Route::post('/portfolio', [PortfolioController::class, 'store'])->name('portfolio.store')->middleware('admin');
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index')->middleware('admin');
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
 
 Route::get('/home', function () {
     return view('index');
