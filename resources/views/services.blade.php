@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 class="text-4xl font-bold mb-10 text-center">Our Photography Services</h1>
+        <h1 class="text-4xl font-bold mb-10 text-center text-white">Our Photography Services</h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="bg-white shadow-lg rounded-lg px-5 py-6 text-center">
