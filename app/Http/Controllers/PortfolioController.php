@@ -104,7 +104,7 @@ class PortfolioController extends Controller
      */
     public function edit()
     {
-        $images = Photo::where('directory', 'portfolio')->get();
+        $images = Photo::where('directory', 'portfolio')->paginate(10);
         return view('portfolio.edit', ['images' => $images]);
     }
 
