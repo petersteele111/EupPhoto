@@ -9,7 +9,7 @@
                 <p class="mt-4 text-xl text-gray-600">At EUP Photography, every click of the shutter is an opportunity to explore beauty, emotion, and connection. Join me on this visual journey, and let's create something beautiful together.</p>
                 <a href="Contact" class="inline-block mt-8 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-500">Schedule Consultation</a>
             </div>
-            <div class="md:w-1/2">
+            <div class="md:w-1/2 mt-4 md:mt-0">
                 <img class="w-full h-full object-cover rounded-lg shadow-md filter grayscale" src="{{ asset('img/about 1.jpg') }}" alt="About me">
             </div>
         </div>
