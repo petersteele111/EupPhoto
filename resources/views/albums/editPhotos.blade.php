@@ -9,6 +9,11 @@
         <div class="my-8">
             <a href="{{ route('photos.create', $album->id) }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Upload <i class="fa fa-upload"></i></a>
         </div>
+        @if ($album->photos->isNotEmpty())
+        <button type="button" onclick="selectAll()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-8">Select All</button>
+        <button type="button" onclick="unselectAll()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Unselect All</button>
+        <button type="submit" onclick="return confirm('Are you sure you want to delete the selected photos?')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete Selected</button>
+        @endif
         <form method="POST" action="{{ route('photos.massDestroy') }}" id="photoForm">
             @csrf
             <div class="flex flex-wrap -mx-4">
@@ -34,11 +39,6 @@
                     <p class="text-white text-center text-4xl mx-auto pb-8">No Images Found</p>
                 @endforelse
             </div>
-            @if ($album->photos->isNotEmpty())
-            <button type="button" onclick="selectAll()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Select All</button>
-            <button type="button" onclick="unselectAll()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Unselect All</button>
-            <button type="submit" onclick="return confirm('Are you sure you want to delete the selected photos?')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete Selected</button>
-            @endif
         </form>
     </div>
 </x-app-layout>
