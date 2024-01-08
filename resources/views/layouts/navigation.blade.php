@@ -34,7 +34,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
-                    <x-nav-link :href="route('Portfolio')" :active="request()->routeIs('Portfolio')" class="text-lg"> <!-- Increased font-size with text-lg -->
+                    <x-nav-link :href="route('portfolio.index')" :active="request()->routeIs('portfolio.index')" class="text-lg"> <!-- Increased font-size with text-lg -->
                         {{ __('Portfolio') }}
                     </x-nav-link>
                 </div>
@@ -87,6 +87,9 @@
                             @if (auth()->user() && auth()->user()->email == 'petersteele111@gmail.com')
                             <x-dropdown-link :href="route('albums.index')">
                                 {{ __('Manage Albums') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('portfolio.edit')">
+                                {{ __('Manage Portfolio') }}
                             </x-dropdown-link>
                             @endif
 
@@ -143,7 +146,7 @@
         </x-responsive-nav-link>
     </div>
     <div class="pt-2 pb-3 space-y-1">
-        <x-responsive-nav-link :href="route('Portfolio')" :active="request()->routeIs('Portfolio')">
+        <x-responsive-nav-link :href="route('portfolio.index')" :active="request()->routeIs('portfolio.index')">
             {{ __('Portfolio') }}
         </x-responsive-nav-link>
     </div>
@@ -185,7 +188,10 @@
                     @if (auth()->user() && auth()->user()->email == 'petersteele111@gmail.com')
                     <x-responsive-nav-link :href="route('albums.index')">
                         {{ __('Manage Albums') }}
-                    </x-dropdown-link>
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('portfolio.edit')">
+                        {{ __('Manage POrtfolio') }}
+                    </x-responsive-nav-link>
                     @endif
 
                     <!-- Authentication -->

@@ -111,6 +111,7 @@ class AlbumController extends Controller
     public function editPhotos($id)
     {
         $album = Album::with('photos')->find($id);
-        return view('albums.editPhotos', ['album' => $album]);
+        $photos = $album->photos()->paginate(10);
+        return view('albums.editPhotos', ['album' => $album, 'photos' => $photos]);
     }
 }
