@@ -52,7 +52,7 @@ Route::get('/home', function () {
 })->name('Home');
 
 Route::get('/services', function () {
-    return view('index');
+    return view('services');
 })->name('Services');
 
 Route::get('/about', function () {
