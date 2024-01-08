@@ -102,9 +102,10 @@ class PortfolioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        $images = Photo::where('directory', 'portfolio')->get();
+        return view('portfolio.edit', ['images' => $images]);
     }
 
     /**
@@ -121,5 +122,17 @@ class PortfolioController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Remove the specified resources from storage.
+     */
+    public function massDelete(Request $request)
+    {
+        $ids = $request->input('delete');
+        if ($ids) {
+            Photo::whereIn('id', $ids)->delete();
+        }
+        return redirect()->route('portfolio.edit')->with('success', 'Selected images deleted successfully');
     }
 }
