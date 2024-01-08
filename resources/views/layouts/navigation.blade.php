@@ -24,7 +24,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
-                    <x-nav-link :href="route('Services')" :active="request()->routeIs('Services')" class="text-lg"> <!-- Increased font-size with text-lg -->
+                    <x-nav-link :href="route('services')" :active="request()->routeIs('services')" class="text-lg"> <!-- Increased font-size with text-lg -->
                         {{ __('Services') }}
                     </x-nav-link>
                 </div>
@@ -136,7 +136,7 @@
         </x-responsive-nav-link>
     </div>
     <div class="pt-2 pb-3 space-y-1">
-        <x-responsive-nav-link :href="route('Services')" :active="request()->routeIs('Services')">
+        <x-responsive-nav-link :href="route('services')" :active="request()->routeIs('services')">
             {{ __('Services') }}
         </x-responsive-nav-link>
     </div>
