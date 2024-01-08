@@ -6,16 +6,16 @@
         </div>
         <div class="w-100">
             <div class="popular-photos">
-                @if ($images->isNotEmpty())
-                <div class="mb-4">
-                    <button type="button" onclick="selectAll()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Select All</button>
-                    <button type="button" onclick="unselectAll()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Unselect All</button>
-                    <button type="submit" onclick="return confirm('Are you sure you want to delete the selected photos?')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete Selected</button>
-                </div>
-            @endif
                 <form method="POST" action="{{ route('portfolio.massDelete') }}">
                     @csrf
                     @method('DELETE')
+                    @if ($images->isNotEmpty())
+                    <div class="mb-4">
+                        <button type="button" onclick="selectAll()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Select All</button>
+                        <button type="button" onclick="unselectAll()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Unselect All</button>
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete the selected photos?')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete Selected</button>
+                    </div>
+                @endif
                     <div class="grid">
                         @foreach($images as $image)
                             <div class="grid-item relative group {{ $image->category }} w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8">
