@@ -52,8 +52,8 @@ Route::get('/home', function () {
 })->name('Home');
 
 Route::get('/services', function () {
-    return view('index');
-})->name('Services');
+    return view('services');
+})->name('services');
 
 Route::get('/about', function () {
     return view('about');
@@ -63,9 +63,9 @@ Route::get('/contact', function () {
     return view('index');
 })->name('Contact');
 
-Route::get('/pricing', function () {
-    return view('index');
-})->name('Pricing');
+// Route::get('/pricing', function () {
+//     return view('index');
+// })->name('Pricing');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

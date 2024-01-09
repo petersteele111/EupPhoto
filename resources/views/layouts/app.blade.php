@@ -38,7 +38,7 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                    {{ $slot }}
             </main>
               <!-- Alpine Lightbox component-->
     <div x-data="caesarLightbox"
