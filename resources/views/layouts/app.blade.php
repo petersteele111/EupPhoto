@@ -37,8 +37,8 @@
             </div>
 
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
+            <main class="bg-gray-800">
+                    {{ $slot }}
             </main>
               <!-- Alpine Lightbox component-->
     <div x-data="caesarLightbox"

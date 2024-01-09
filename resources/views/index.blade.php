@@ -1,27 +1,33 @@
 <x-app-layout>
-    <div class="relative bg-cover bg-center text-white flex flex-col justify-between items-center" style="background-image: url({{ asset('img/home_1920_min.jpg') }}); height: calc(100vh - 80px);">
-        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div class="mt-4 content-center text-center relative">
-            <p class="text-5xl sm:text-7xl xl:text-9xl">Landscape & Portrait </br> Photography</p>
+        <div class="relative bg-transparent flex flex-col justify-center items-center mt-[-80px]" style="height: calc(100vh);">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url({{ asset('img/home_1920_min.jpg') }});"></div>
+            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+
+            <div class="content-center text-center relative mb-4">
+                <p class="text-sm md:text-lg text-white font-semibold">PORTRAIT AND LANDSCAPE PHOTOGRAPHY</p>
+            </div>
+    
+            <div class="content-center text-center relative mb-12">
+                <p class="text-5xl md:text-7xl text-white font-bold">EUP Photography</p>
+            </div>
+    
+            <button onclick="location.href='{{ route('portfolio.index')}}'" class="bg-red-600 hover:bg-red-800 text-white font-bold py-4 px-8 rounded transform transition duration-200 ease-in-out hover:-translate-y-1">
+                View My Work
+            </button>
         </div>
 
-        <div class="text-2xl xl:text-4xl relative">
-            <a href="{{ route('Contact')}}" class="bg-red-600 hover:bg-red-800 text-white font-bold py-4 px-8 rounded-full">
-                Work With Me
-            </a>
-        </div>
-        
         {{-- Down arrow indicating more content below --}}
-        <div class="pb-4">
-            <a href="#next-section" class="scroll-link">
+        {{-- <div class="fixed bottom-0 pb-4 w-full flex justify-center">
+            <a href="#next-section" class="scroll-link mb-8">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 animate-bounce text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                 </svg>
             </a>
-        </div>
-    </div>
+        </div> --}}
 
-    {{-- Section for recent work styled with Tailwind CSS --}}
+        
+
+    {{-- Section for recent work styled with Tailwind CSS
     <div class="px-12 pt-16 w-100">
         <div class="popular-photos" id="next-section">
             <h2 class="uppercase tracking-wider text-white text-5xl text-center font-semibold">Recent Work</h2>
@@ -35,5 +41,5 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
 </x-app-layout>
