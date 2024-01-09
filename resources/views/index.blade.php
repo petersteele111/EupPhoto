@@ -1,6 +1,6 @@
 <x-app-layout>
         <div class="relative bg-transparent flex flex-col justify-center items-center mt-[-80px]" style="height: calc(100vh);">
-            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url({{ asset('img/home_1920_min.jpg') }});"></div>
+            <div id="background" class="absolute inset-0 bg-cover bg-center" style="background-image: url({{ asset('img/home_1920_min.jpg') }});"></div>
             <div class="absolute inset-0 bg-black bg-opacity-20"></div>
 
             <div class="content-center text-center relative mb-4">
@@ -43,3 +43,11 @@
         </div>
     </div> --}}
 </x-app-layout>
+
+<script>
+    var images = [
+        "{{ asset('img/Northern Lights 2.jpg') }}",
+        "{{ asset('img/Tahquamenon Falls FALL.jpg') }}",
+        "{{ asset('img/home_1920_min.jpg') }}",
+    ];
+</script>
