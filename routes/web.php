@@ -5,6 +5,7 @@ use App\Http\Controllers\PhotoController; // Import the PhotosController class
 use App\Http\Controllers\AlbumController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PortfolioController; // Import the PortfolioController class
+use App\Http\Controllers\ContactController; // Import the ContactController class
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,10 @@ Route::get('/portfolio/edit', [PortfolioController::class, 'edit'])->name('portf
 Route::delete('/portfolio/massDelete', [PortfolioController::class, 'massDelete'])->name('portfolio.massDelete')->middleware('admin');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
 
+// Contact
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
 Route::get('/home', function () {
     return view('index');
 })->name('Home');
@@ -60,8 +65,8 @@ Route::get('/about', function () {
 })->name('About');
 
 Route::get('/contact', function () {
-    return view('index');
-})->name('Contact');
+    return view('contact');
+})->name('contact');
 
 // Route::get('/pricing', function () {
 //     return view('index');
