@@ -3,4 +3,3 @@ This is my professional website for my photography work. This will be were clien
 
 ## Languages Used
 This site is mostly going to be PHP but is built off Laravel as a framework and uses Alpine.js and tailwindcss as well. 
-
