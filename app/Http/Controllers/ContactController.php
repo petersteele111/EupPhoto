@@ -22,7 +22,7 @@ class ContactController extends Controller
             'message' => 'required',
         ]);
 
-        Mail::to()->send(new ContactFormMailable($data));
+        Mail::to(env('CONTACT_FORM_EMAIL'))->send(new ContactFormMailable($data));
 
         return redirect('contact')->with('message', 'Thanks for your message. We\'ll be in touch soon. If this is urgent, please call at 906-349-1202. Thank you for your interest and we look forward to working with you!');
     }

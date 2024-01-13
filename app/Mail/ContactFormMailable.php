@@ -8,10 +8,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 
 class ContactFormMailable extends Mailable
-{
-    use Queueable, SerializesModels;
+{    use Queueable, SerializesModels;
 
     public $data;
 
@@ -29,6 +29,7 @@ class ContactFormMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address($this->data['email'], $this->data['name']),
             subject: 'EUP Photography Contact Form',
         );
     }
@@ -36,17 +37,18 @@ class ContactFormMailable extends Mailable
     /**
      * Get the message content definition.
      */
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
-        return (new Content)
-            ->view('email.contact')
-            ->with('name', $this->data['name'])
-            ->with('email', $this->data['email'])
-            ->with('message', $this->data['message']);
+        return new Content (
+            html: 'email.contact',
+            with: [
+                'name' => $this->data['name'],
+                'email' => $this->data['email'],
+                'userMessage' => $this->data['message'],
+            ]
+        );
     }
+
     /**
      * Get the attachments for the message.
      *
