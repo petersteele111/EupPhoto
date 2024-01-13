@@ -45,9 +45,16 @@
 </x-app-layout>
 
 <script>
+    
     var images = [
         "{{ asset('img/Northern Lights 2.jpg') }}",
         "{{ asset('img/Tahquamenon Falls FALL.jpg') }}",
         "{{ asset('img/home_1920_min.jpg') }}",
     ];
+
+    // Pre-load images
+    images.forEach(function(imageUrl) {
+        var img = new Image();
+        img.src = imageUrl;
+    });
 </script>

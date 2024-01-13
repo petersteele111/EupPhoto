@@ -23,8 +23,11 @@ window.onload = function() {
 
     var currentIndex = -1;
     setInterval(function () {
-        currentIndex = (currentIndex + 1) % images.length; // increment the index, and wrap around to 0 if it exceeds the length of the array
-        document.getElementById('background').style.backgroundImage = 'url("' + images[currentIndex] + '")';
+        var backgroundElement = document.getElementById('background');
+        if (backgroundElement) {
+            currentIndex = (currentIndex + 1) % images.length; // increment the index, and wrap around to 0 if it exceeds the length of the array
+            backgroundElement.style.backgroundImage = 'url("' + images[currentIndex] + '")';
+        }
     }, 5000);
 };
 
