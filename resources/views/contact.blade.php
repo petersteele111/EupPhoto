@@ -1,6 +1,11 @@
 <x-app-layout>
     <div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
+            @if (session('success'))
+                <div class="status-message bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                    <span class="block sm:inline">{{ session('success') }}</span>
+                </div>
+            @endif
             <div>
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
                     Contact Us
@@ -33,11 +38,6 @@
                     </button>
                 </div>
             </form>
-            @if (session('success'))
-            <div class="status-message bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                <span class="block sm:inline">{{ session('success') }}</span>
-            </div>
-        @endif
         </div>
     </div>
 </x-app-layout>
