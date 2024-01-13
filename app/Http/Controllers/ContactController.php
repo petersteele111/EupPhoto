@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactFormMailable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailableClass;
 
 class ContactController extends Controller
 {
@@ -19,6 +22,8 @@ class ContactController extends Controller
             'message' => 'required',
         ]);
 
-        // Handle the form submission logic here
+        Mail::to()->send(new ContactFormMailable($data));
+
+        return redirect('contact')->with('message', 'Thanks for your message. We\'ll be in touch soon. If this is urgent, please call at 906-349-1202. Thank you for your interest and we look forward to working with you!');
     }
 }
